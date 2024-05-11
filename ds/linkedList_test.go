@@ -38,3 +38,30 @@ func TestInsertNewNode(t *testing.T) {
 		})
 	}
 }
+
+func TestSearchNode(t *testing.T) {
+	tests := []struct {
+		name         string
+		elements     []any
+		target       any
+		expected_pos int
+	}{
+		{"SearchFirstNode", []any{2, 4, 6, 8}, 2, 0},
+		{"SearchLastNode", []any{1, 3, 5, 7}, 7, 3},
+		{"SearchRandomNode", []any{2, 5, 7, 17, 1, 4}, 1, 4},
+		{"SearchTargetDontExist", []any{2.4, -2, 5.2, 10, 17, 89}, 100, -1},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			list := NewLinkedList()
+			for _, element := range test.elements {
+				list.Insert(element)
+			}
+			got := list.Search(test.target)
+
+			if got != test.expected_pos {
+				t.Errorf("Error while searching, expected_pos=%d, got=%d", test.expected_pos, got)
+			}
+		})
+	}
+}

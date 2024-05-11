@@ -30,3 +30,17 @@ func (l *LinkedList) Insert(data any) {
 	l.Last = &newNode
 	l.Size++
 }
+
+func (l *LinkedList) Search(target any) int {
+
+	currentNode := l.First
+	c := 0
+	for currentNode != nil {
+		if currentNode.value == target {
+			return c
+		}
+		currentNode = currentNode.next
+		c++
+	}
+	return -1
+}
