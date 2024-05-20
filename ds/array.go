@@ -16,3 +16,15 @@ func InsertByPos(arr []int, index int, value int) ([]int, error) {
 
 	return new_arr, nil
 }
+
+func RemoveByIndex(arr []int, index int) ([]int, error) {
+	if index < 0 || index > len(arr) {
+		return nil, errors.New("Index out of range")
+	}
+
+	new_arr := make([]int, len(arr)-1)
+	copy(new_arr[:index], arr[:index])
+	copy(new_arr[index:], arr[index+1:])
+
+	return new_arr, nil
+}
