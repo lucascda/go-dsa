@@ -1,4 +1,4 @@
-package main
+package sorting
 
 func BinarySearch(arr []int, target int) (int, error) {
 	low, high := 0, len(arr)-1
